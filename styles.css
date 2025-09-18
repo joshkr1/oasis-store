@@ -3,229 +3,171 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  background: #f9f9f9;
-  color: #333;
-}
-
-/* Header */
-.header {
+/* Navigation */
+header {
   background: #222;
-  color: #fff;
+  padding: 15px 30px;
+}
+
+nav {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem;
   align-items: center;
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.nav a {
   color: #fff;
-  margin-left: 20px;
-  text-decoration: none;
-  transition: all 0.3s;
+  font-size: 1.8rem;
 }
 
-.nav a:hover,
-.nav a.active {
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
   color: #ff9800;
-  border-bottom: 2px solid #ff9800;
-  padding-bottom: 2px;
 }
 
 /* Hero Section */
 .hero {
-  background: url("images/banner.jpg") no-repeat center center/cover;
+  height: 80vh;
+  background: url('images/hero-bg.jpg') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   text-align: center;
-  padding: 4rem 2rem;
-  position: relative;
-}
-
-.hero-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  display: inline-block;
-  padding: 1rem 2rem;
-  border-radius: 8px;
+  padding: 20px;
 }
 
 .hero h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  margin-bottom: 15px;
 }
 
 .hero p {
   font-size: 1.2rem;
-  margin-top: 0.5rem;
+  margin-bottom: 25px;
 }
 
-/* Products */
-.products {
+.btn {
+  background: #ff9800;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #e67e00;
+}
+
+/* Discount Page */
+.discounts {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.discounts h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.discounts p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+/* Product Grid */
+.product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
+  gap: 25px;
+  padding: 20px;
 }
 
+/* Product Card */
 .product-card {
   background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  border: 3px solid #eee;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  padding: 1rem;
-  position: relative;
+  text-align: center;
 }
 
 .product-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
 }
 
 .product-card img {
   width: 100%;
-  height: 220px;
+  height: 200px;
   object-fit: cover;
   border-radius: 12px;
-  border: 4px solid #eee;
-  transition: transform 0.3s;
-}
-
-.product-card:hover img {
-  transform: scale(1.05);
+  margin-bottom: 15px;
 }
 
 .product-card h3 {
-  margin: 1rem 0 0.5rem;
+  margin: 10px 0;
+  font-size: 1.3rem;
+  color: #222;
 }
 
-.product-card p {
-  font-size: 1.1rem;
-  color: #555;
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.new-price {
+  font-size: 1.4rem;
+  color: #e63946;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .product-card button {
-  margin-top: 0.5rem;
-  padding: 10px 20px;
-  border: none;
-  background: #ff9800;
+  background: #007bff;
   color: #fff;
-  border-radius: 6px;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: background 0.3s;
 }
 
 .product-card button:hover {
-  background: #e68900;
-  transform: scale(1.05);
-}
-
-/* Badges */
-.badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: #ff9800;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-.badge.sale {
-  background: #e53935;
-}
-
-.badge.new {
-  background: #4caf50;
-}
-
-/* Discounts */
-.discount .old-price {
-  text-decoration: line-through;
-  color: #888;
-  margin-right: 10px;
-}
-
-.discount .new-price {
-  color: #e53935;
-  font-weight: bold;
-}
-
-/* Checkout */
-.checkout-form {
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.checkout-form h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.checkout-form label {
-  display: block;
-  margin: 10px 0 5px;
-}
-
-.checkout-form input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.checkout-form button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 1rem;
-  border: none;
-  background: #ff9800;
-  color: #fff;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.checkout-form button:hover {
-  background: #e68900;
-  transform: scale(1.05);
+  background: #0056b3;
 }
 
 /* Footer */
-.footer {
-  background: #111;
+footer {
+  background: #222;
   color: #fff;
   text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-
-.footer .socials {
-  margin-top: 0.5rem;
-}
-
-.footer .socials a {
-  color: #ff9800;
-  text-decoration: none;
-  margin: 0 8px;
-  transition: color 0.3s;
-}
-
-.footer .socials a:hover {
-  color: #fff;
+  padding: 15px;
+  margin-top: 40px;
 }
 
