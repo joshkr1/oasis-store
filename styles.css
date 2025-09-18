@@ -1,361 +1,188 @@
-/* ===============================
-   RESET & BASE
-=============================== */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  /* Light Theme Colors */
-  --color-bg: #fff;
-  --color-bg-light: #f9f9f9;
-  --color-text: #111;
-  --color-muted: #555;
-  --color-dark: #000;
-  --color-overlay: rgba(0, 0, 0, 0.5);
-  --color-light: #f5f5f5;
-  --color-gold: #d4af37;
-  --color-accent: #d32f2f;
-  --color-primary: #ff9800;
-  --color-primary-dark: #e68900;
-  --color-success: #4caf50;
-  --color-danger: #e53935;
-
-  /* Spacing & Radius */
-  --spacing: 20px;
-  --radius: 8px;
-
-  /* Typography */
-  --font-base: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-size-base: 16px;
-  --font-size-h1: 2.5rem;
-  --font-size-h2: 2rem;
-  --font-size-h3: 1.2rem;
-
-  /* Shadows */
-  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
 body {
-  font-family: var(--font-base);
-  font-size: var(--font-size-base);
+  font-family: "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
-  background: var(--color-bg-light);
-  color: var(--color-text);
-
-  /* Smooth Theme Transition */
+  background: repeating-linear-gradient(
+    45deg,
+    #fff,
+    #fff 40px,
+    #faf6ef 40px,
+    #faf6ef 80px
+  );
+  color: #111;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* ===============================
-   DARK THEME
-=============================== */
-body.dark-theme {
-  --color-bg: #121212;
-  --color-bg-light: #1e1e1e;
-  --color-text: #f5f5f5;
-  --color-muted: #aaa;
-  --color-dark: #fff;
-  --color-light: #222;
-  --shadow-sm: 0 4px 10px rgba(255, 255, 255, 0.05);
-  --shadow-md: 0 8px 20px rgba(255, 255, 255, 0.1);
-}
-
-/* Auto Dark Mode (system preference) */
-@media (prefers-color-scheme: dark) {
-  body {
-    --color-bg: #121212;
-    --color-bg-light: #1e1e1e;
-    --color-text: #f5f5f5;
-    --color-muted: #aaa;
-    --color-dark: #fff;
-    --color-light: #222;
-    --shadow-sm: 0 4px 10px rgba(255, 255, 255, 0.05);
-    --shadow-md: 0 8px 20px rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* ===============================
-   HEADER & NAV
-=============================== */
-header,
-.header {
+/* Header */
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
-  background: var(--color-dark);
-  color: var(--color-bg);
+  padding: 20px 50px;
+  background: #000;
   position: sticky;
   top: 0;
   z-index: 1000;
-
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-header .logo,
-.header .logo {
+header .logo {
+  font-family: "Didot", "Playfair Display", serif;
   font-size: 28px;
   font-weight: bold;
   letter-spacing: 2px;
-  color: var(--color-gold);
+  color: #fff;
 }
 
-nav ul,
-.nav {
-  list-style: none;
+nav ul {
   display: flex;
+  list-style: none;
   gap: 30px;
 }
 
-nav ul li a,
-.nav a {
+nav ul li a {
   text-decoration: none;
-  color: var(--color-bg);
-  font-size: 16px;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
 }
 
 nav ul li a:hover,
-.nav a:hover,
-.nav a.active {
-  color: var(--color-primary);
-  border-bottom: 2px solid var(--color-primary);
-  padding-bottom: 2px;
+nav ul li a.active {
+  color: #d4af37; /* gold */
 }
 
-/* Dark Mode Toggle Button */
-#theme-toggle {
-  margin-left: 20px;
-  font-size: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-bg);
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-#theme-toggle:hover {
-  transform: scale(1.2);
-  color: var(--color-gold);
-}
-
-@media (max-width: 768px) {
-  header {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  #theme-toggle {
-    margin-left: 0;
-  }
-}
-
-/* ===============================
-   HERO
-=============================== */
+/* Hero / Special Offer */
 .hero {
   text-align: center;
-  padding: 100px 20px;
-  background: var(--color-light);
-  color: var(--color-text);
-  position: relative;
-
-  transition: background-color 0.4s ease, color 0.4s ease;
+  padding: 120px 20px;
+  background: #fefefe;
+  color: #000;
 }
 
-.hero.bg-image {
-  background: url("images/banner.jpg") no-repeat center center/cover;
-  color: var(--color-bg);
-}
-
-.hero-overlay {
-  background: var(--color-overlay);
-  display: inline-block;
-  padding: 1rem 2rem;
-  border-radius: var(--radius);
-}
-
-.hero h1,
-.hero h2 {
-  font-size: var(--font-size-h1);
+.hero h1 {
+  font-family: "Didot", "Playfair Display", serif;
+  font-size: 48px;
+  font-weight: 500;
   margin-bottom: 20px;
-  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .hero p {
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: #444;
 }
 
-/* ===============================
-   BUTTONS
-=============================== */
-.btn,
-.product-card button,
-.checkout-form button {
-  display: inline-block;
-  background: var(--color-dark);
-  color: var(--color-bg);
-  padding: 10px 20px;
-  border-radius: var(--radius);
+.hero .btn {
+  background: #000;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
   transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
 }
 
-.btn:hover,
-.product-card button:hover,
-.checkout-form button:hover {
-  background: var(--color-primary);
-  color: var(--color-bg);
-  transform: scale(1.05);
+.hero .btn:hover {
+  background: #d4af37;
+  color: #000;
 }
 
-/* ===============================
-   PRODUCTS
-=============================== */
+/* Products */
 .products {
-  padding: 50px 20px;
+  padding: 60px 50px;
+  text-align: center;
+}
+
+.products h2 {
+  font-family: "Didot", "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
 }
 
 .product-card {
-  background: var(--color-bg);
-  border-radius: 12px;
-  padding: 15px;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  position: relative;
-  transition: transform 0.3s, box-shadow 0.3s, background-color 0.4s ease, color 0.4s ease;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eee;
 }
 
 .product-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
 .product-card img {
   width: 100%;
-  height: 220px;
+  height: 340px;
   object-fit: cover;
-  border: 4px solid #eee;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  transition: transform 0.3s, filter 0.4s ease;
-}
-
-.product-card:hover img {
-  transform: scale(1.05);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 4px solid #d4af37; /* gold frame */
 }
 
 .product-card h3 {
-  font-size: var(--font-size-h3);
-  margin: 1rem 0 0.5rem;
-  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
 .product-card p {
-  font-size: 1.1rem;
-  color: var(--color-muted);
+  font-size: 16px;
+  margin-bottom: 12px;
 }
 
-/* Badges */
-.badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: var(--color-primary);
-  color: var(--color-bg);
-  padding: 5px 10px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-.badge.sale {
-  background: var(--color-danger);
-}
-
-.badge.new {
-  background: var(--color-success);
-}
-
-/* Pricing */
 .old-price {
   text-decoration: line-through;
   color: #888;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .discount-price {
-  color: var(--color-danger);
-  font-weight: bold;
-}
-
-/* ===============================
-   CHECKOUT
-=============================== */
-.checkout-form {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 20px;
-  border-radius: 12px;
-  background: var(--color-bg);
-  box-shadow: var(--shadow-sm);
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-.checkout-form label {
-  display: block;
-  margin-bottom: 8px;
+  color: #d32f2f;
   font-weight: 600;
 }
-
-.checkout-form input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 2px solid var(--color-gold);
-  border-radius: var(--radius);
-}
-
-/* ===============================
-   FOOTER
-=============================== */
-.footer {
-  background: var(--color-dark);
-  color: var(--color-bg);
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-.footer .socials {
-  margin-top: 0.5rem;
-}
-
-.footer .socials a {
-  color: var(--color-primary);
-  margin: 0 8px;
+[O
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 10px 24px;
   text-decoration: none;
-  transition: color 0.3s ease;
+  border-radius: 4px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
 }
 
-.footer .socials a:hover {
-  color: var(--color-bg);
+.btn:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* Footer */
+footer {
+  padding: 25px;
+  text-align: center;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 
